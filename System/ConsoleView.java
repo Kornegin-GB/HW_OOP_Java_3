@@ -12,29 +12,38 @@ public class ConsoleView {
 
     public static void view() {
         if (step == 0) {
-            System.out.println(AnsiColors.ANSI_RED + "Начало игры." + AnsiColors.ANSI_RESET);
+            System.out.printf(AnsiColors.ANSI_RED + "%-50s", "Начало игры." + AnsiColors.ANSI_RESET);
         } else {
-            System.out.println(AnsiColors.ANSI_RED + "Ход №" + step + "." + AnsiColors.ANSI_RESET);
+            System.out.printf(AnsiColors.ANSI_RED + "%-50s", "Ход №" + step + "." + AnsiColors.ANSI_RESET);
         }
+        System.out.printf(AnsiColors.ANSI_BLUE + "%-75s", "Команда синих." + AnsiColors.ANSI_RESET);
+        System.out.println(AnsiColors.ANSI_GREEN + "Команда зеленых." + AnsiColors.ANSI_RESET);
         step++;
 
         System.out.println(ConsoleView.TOP10);
-        int a = 0;
         for (int i = 1; i <= Main.getGangSize() - 1; i++) {
             for (int j = 1; j <= Main.getGangSize(); j++) {
                 System.out.print(getChar(new Vector2D(j, i)));
-                a = j;
             }
-            System.out.println("|");
+            System.out.print("|");
+            System.out.println(getPrintSide(i));
             System.out.println(ConsoleView.MID10);
         }
 
         for (int j = 1; j <= Main.getGangSize(); j++) {
             System.out.print(getChar(new Vector2D(j, Main.getGangSize() - 1)));
         }
-        System.out.println("|");
+        System.out.print("|");
+        System.out.println(getPrintSide(Main.getGangSize()));
         System.out.println(ConsoleView.BOTTOM10);
         System.out.println("Press Enter.");
+    }
+
+    private static String getPrintSide(int i) {
+        String str = "";
+        str += String.format("\t\t\t" + "%-80s", AnsiColors.ANSI_BLUE + Main.getBlueSide().get(i - 1).getInfo() + AnsiColors.ANSI_RESET);
+        str += String.format(AnsiColors.ANSI_GREEN + Main.getGreenSide().get(i - 1).getInfo() + AnsiColors.ANSI_RESET);
+        return str;
     }
 
     private static String formatDiv(String str) {

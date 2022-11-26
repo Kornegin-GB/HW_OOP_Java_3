@@ -54,7 +54,6 @@ public abstract class Unit implements UnitInterface {
 
     @Override
     public void step(List<Unit> gang) {
-        position.setX(position.getX() + 1);
 //        int index = 0;
 //        float dist = Float.MAX_VALUE;
 //        for (int i = 0; i < gang.size(); i++) {
