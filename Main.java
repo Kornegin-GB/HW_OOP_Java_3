@@ -10,20 +10,19 @@ import HW_OOP_Java_3.Units.whiteSide.Robber;
 import HW_OOP_Java_3.Units.whiteSide.Sniper;
 import HW_OOP_Java_3.Units.whiteSide.Wizard;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    protected static final int GANG_SIZE = 10;
+    protected static final int FIELD_WIDTH = 10;
+    protected static final int GANG_SIZE = 5;
     protected static List<Unit> blueSide;
     protected static List<Unit> greenSide;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         runGames();
-
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -35,6 +34,7 @@ public class Main {
 
             scanner.nextLine();
         }
+
     }
 
     private static void runGames() {
@@ -52,7 +52,7 @@ public class Main {
             }
         }
 
-        x = GANG_SIZE;
+        x = FIELD_WIDTH;
         y = 1;
         for (int i = 0; i < GANG_SIZE; i++) {
             switch (new Random().nextInt(4)) {
@@ -66,6 +66,10 @@ public class Main {
 
     public static int getGangSize() {
         return GANG_SIZE;
+    }
+
+    public static int getFieldWidth() {
+        return FIELD_WIDTH;
     }
 
     public static List<Unit> getBlueSide() {

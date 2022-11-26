@@ -5,9 +5,9 @@ import HW_OOP_Java_3.Main;
 import java.util.Collections;
 
 public class ConsoleView {
-    private static final String TOP10 = formatDiv("a") + String.join("", Collections.nCopies(Main.getGangSize() - 1, formatDiv("-b"))) + formatDiv("-c");
-    private static final String MID10 = formatDiv("d") + String.join("", Collections.nCopies(Main.getGangSize() - 1, formatDiv("-e"))) + formatDiv("-f");
-    private static final String BOTTOM10 = formatDiv("g") + String.join("", Collections.nCopies(Main.getGangSize() - 1, formatDiv("-h"))) + formatDiv("-i");
+    private static final String TOP10 = formatDiv("a") + String.join("", Collections.nCopies(Main.getFieldWidth() - 1, formatDiv("-b"))) + formatDiv("-c");
+    private static final String MID10 = formatDiv("d") + String.join("", Collections.nCopies(Main.getFieldWidth() - 1, formatDiv("-e"))) + formatDiv("-f");
+    private static final String BOTTOM10 = formatDiv("g") + String.join("", Collections.nCopies(Main.getFieldWidth() - 1, formatDiv("-h"))) + formatDiv("-i");
     private static int step = 0;
 
     public static void view() {
@@ -22,7 +22,7 @@ public class ConsoleView {
 
         System.out.println(ConsoleView.TOP10);
         for (int i = 1; i <= Main.getGangSize() - 1; i++) {
-            for (int j = 1; j <= Main.getGangSize(); j++) {
+            for (int j = 1; j <= Main.getFieldWidth(); j++) {
                 System.out.print(getChar(new Vector2D(j, i)));
             }
             System.out.print("|");
@@ -30,8 +30,8 @@ public class ConsoleView {
             System.out.println(ConsoleView.MID10);
         }
 
-        for (int j = 1; j <= Main.getGangSize(); j++) {
-            System.out.print(getChar(new Vector2D(j, Main.getGangSize() - 1)));
+        for (int j = 1; j <= Main.getFieldWidth(); j++) {
+            System.out.print(getChar(new Vector2D(j, Main.getGangSize())));
         }
         System.out.print("|");
         System.out.println(getPrintSide(Main.getGangSize()));
